@@ -1,105 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
 
-    <meta charset="utf-8">
-    <title>Bootstrap jQuery Validate form : twitterbootstrap.org</title>
-    <meta name="viewport" content="width=device-width">
-<!--     <link href="style.css" rel="stylesheet"> -->
-<!--     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" /> -->
-    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
-    <link href="form/style.css" rel="stylesheet" type="text/css">
+<head>
+	<title>view jobs</title>
 </head>
 
 <body>
-<div class="container">
-  <div class="row-fluid">
-    <div class="span12">
-    <h1>Twitter Bootstrap jQuery Validate Registration form</h1>
-    </div>
-  </div>
-  <div class="row-fluid">
-  <div class="span6 offset6">
-    <div id="maincontent" class="span8"> 
-      
-      <form id="registration-form" class="form-horizontal">
-       
-          <h1>Sample Registration form <small>(Fill up the forms to get register)</small></h1>
-          <br/>
-          
-          <div class="form-control-group">
-            <label class="control-label" for="name">Your Name</label>
-            <div class="controls">
-              <input type="text" class="input-xlarge" name="name" id="name">
-            </div>
-          </div>
-          
-          <div class="form-control-group">
-            <label class="control-label" for="name">User Name</label>
-            <div class="controls">
-              <input type="text" class="input-xlarge" name="username" id="username">
-            </div>
-          </div>
-          
-          <div class="form-control-group">
-            <label class="control-label" for="name">Password</label>
-            <div class="controls">
-              <input type="password" class="input-xlarge" name="password" id="password">
-            </div>
-          </div>
-          
-          <div class="form-control-group">
-            <label class="control-label" for="name"> Retype Password</label>
-            <div class="controls">
-              <input type="password" class="input-xlarge" name="confirm_password" id="confirm_password">
-            </div>
-          </div>
-          
-          <div class="form-control-group">
-            <label class="control-label" for="email">Email Address</label>
-            <div class="controls">
-              <input type="text" class="input-xlarge" name="email" id="email">
-            </div>
-          </div>
-          <div class="form-control-group">
-            <label class="control-label" for="message">Your Address</label>
-            <div class="controls">
-              <textarea class="input-xlarge" name="address" id="address" rows="3"></textarea>
-            </div>
-          </div>
-          
-          <div class="form-control-group">
-            <label class="control-label" for="message"> Please agree to our policy</label>
-            <div class="controls">
-             <input id="agree" class="checkbox" type="checkbox" name="agree">
-            </div>
-          </div>
-          
-          <div class="form-actions">
-            <button type="submit" class="btn btn-success btn-large">Register</button>
-            <button type="reset" class="btn">Cancel</button>
-          </div>
-  
-      </form>
-    </div>
-    <!-- .span --> 
-  </div>
-  <!-- .row -->
-  
-</div>
-<!-- .container --> 
+	<table width='800' align='center' border='5'>
 
-<script src="form/assets/js/jquery-1.7.1.min.js"></script> 
+		<?php
+			mysql_connect("localhost", "root", "ali");
+			mysql_select_db("job_portal");
 
-<script src="form/assets/js/jquery.validate.js"></script> 
+			$query="SELECT * FROM job";
+// 			$query1="SELECT * FROM recruiters";
 
-<script src="form/script.js"></script> 
-<script>
-	addEventListener('load', prettyPrint, false);
-	$(document).ready(function(){
-	$('pre').addClass('prettyprint linenums');
-	});
-</script> 
+			$run=mysql_query($query);
+// 			$run1=mysql_query($query1);
 
+			while($row=mysql_fetch_array($run)) {
+				$jobname=$row[1];
+				$compname=$row[7];
+				$location=$row[2];
+				$exp=$row[3];
+				$salary=$row[4];
+// 				$jobdesc=$row[5];
+// 				$skills=$row[6];
+		?>
+			<tr align='center'>
+				<td> <?php echo $jobname; ?> </td>
+				<td> <?php echo $compname; ?> </td>
+				<td> <?php echo $location; ?> </td>
+				<td> <?php echo $exp; ?> </td>
+				<td> <?php echo $salary; ?> </td>
+<!-- 				<td> <?php echo $jobdesc; ?> </td> -->
+<!-- 				<td> <?php echo $skills; ?> </td></br> -->
+			</tr>
+
+		<?php }	?>
+	</table>
 </body>
 </html>

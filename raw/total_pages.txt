@@ -1,0 +1,16 @@
+1)  post job			211
+2)  signup			158
+3)  signuprec 			152
+4)  update profile		340
+5)  view jobs			235
+6)  view jobs rec		122
+7)  view profile		186
+8)  view profilerec		170
+9)  welcome			150
+10) job posted			144
+11) login			104
+12) login rec			104
+13) logout			  7
+14) logout rec			  7
+-------------------------------------
+        Total		       2040

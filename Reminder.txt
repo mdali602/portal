@@ -1,0 +1,13 @@
+0.(DONE) how to get the event when a touple is clicked inside table in a database.
+1.(DONE) file upload download code in php.
+2.(NOT REQ) output file in php.
+3.(DONE) pagination in php.
+4.(DONE) bootstrap pagination.
+5. bootstrap collapse.
+6. sort by date (posting date [recent posting first], applicationdeadline[closing soon first], start date [nearest ones first])
+   sort by location. using order by query in mysql
+7. Search Box with auto-suggetion.
+8. Modals in bootstrap.(pop up and fade in whole screen).
+9. Scrollspy.in bootstrap.
+10. tab in bootstrap.(avoid multiple page in a site for eg home about contact all come in one page).
+11. tooltip.

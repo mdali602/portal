@@ -10,7 +10,6 @@
 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-
     
 </head>
 <body>
@@ -27,7 +26,7 @@
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
-                        <form id="loginform" class="form-horizontal" role="form" action="login.php" method="POST">
+                        <form id="loginform" class="form-horizontal" role="form" action="login_rec.php" method="POST">
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -56,7 +55,7 @@
                                     <div class="col-md-12 control">
                                         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
                                             Don't have an account! 
-                                        <a href="signup.php" >
+                                        <a href="signup_rec.php" >
                                             Sign Up Here
                                         </a>
                                         </div>
@@ -83,7 +82,7 @@
     $username=$_POST['username'];
     $password=$_POST['password'];
 
-    $check_user="SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $check_user="SELECT * FROM recruiters WHERE username='$username' AND password='$password'";
     
     $run=mysql_query($check_user);
     
@@ -92,7 +91,7 @@
       $_SESSION['username']=$username;
 //       echo $check_user;
 
-      echo "<script> window.open('welcome.php', '_self')</script>";
+      echo "<script> window.open('view_profile_rec.php', '_self')</script>";
 //       echo "<script> alert('Login Successfull!')</script>";
     }
     else {
@@ -100,5 +99,5 @@
     }
     
   }
-  
+
 ?>

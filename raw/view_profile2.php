@@ -19,13 +19,6 @@
   $password=$row[3];
   $email=$row[4];
   $phone=$row[5];
-//   $location='uploads/';
-  $query="SELECT * FROM users_info WHERE username='$username'";
-  $run=mysql_query($query);
-  $row=mysql_fetch_array($run);
-  $location=$row[2];
-  $path=$row[3];
-  $resname=$row[4];
   
 ?>
 <!DOCTYPE html>
@@ -37,8 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
-<!--     <link rel="stylesheet" type="text/css" href="form/style.css" /> -->
-    
+
     <script type="text/javascript" src="bootstrap/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -57,10 +49,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="welcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li><a href="welcome.php">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="view_jobs.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -80,8 +71,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
-                <li><a href="update_profile.php"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a></li>
-                <li><a href="view_profile.php"><span class="glyphicon glyphicon-eye-open"></span> View Profile</a></li>
+                <li><a href="update_profile.php"><span class="glyphicon glyphicon-refresh"></span> Update Profile</a></li>
+                <li><a href="view_profile.php"><span class="glyphicon glyphicon-refresh"></span> View Profile</a></li>
                 <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> Sign out</a></li><!--
                 <li class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
@@ -98,7 +89,7 @@
 <div class="container" style="margin-top: 100px;">
 <!--     <h1>Edit Profile</h1> -->
 	
-    <b style="margin-left: 14%;">WELCOME</b>
+    <b>WELCOME</b>
     <font color="red" size="5">
       <?php
 	  echo $_SESSION['username'];
@@ -111,38 +102,42 @@
 	<div class="row">
       <!-- left column -->
       <div class="col-md-3">
-        <div class="text-center" style="margin-right: 80%">
-<!--           <img src="uploads/$username" class="avatar img-circle" alt="avatar" style="width:150px; height=180px;"> -->
-          <div class="avatar img-circle" alt="avatar">
-	    <?php echo "<img src='$location' class='avatar img-circle' alt='avatar' style='width:150px; height=180px; margin-left: 300%' />";?>
-          </div>
-          <!--<h6>Upload a different photo...</h6>
-          <form action="view_profile.php" method="POST" enctype="multipart/form-data">
+        <div class="text-center">
+          <img src="uploads/<?php $username?>" class="avatar img-circle" alt="avatar">
+          <h6>Upload a different photo...</h6>
+          <!--<form action="view_profile.php" method="POST" enctype="multipart/form" role="form">
+	    <input type="file" name="file" class="form-control" /></br></br>
+	    <input type="submit" value="upload" name="upload" />
+	  <div class="spacer">
+	      <a href="upload.php" class="login-button">upload</a>
+	  </div>
+	  </form>-->
+	  <form action="view_profile2.php" method="POST" enctype="multipart/form-data">
 	    <input type="file" name="file"></br></br>
 	    <input type="submit" value="upload" name="upload">
-	  </form>-->
+	  </form>
         </div>
       </div>
       
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
         
-<!--         <h3>Personal info</h3> -->
+        <h3>Personal info</h3>
         
-        <form class="form-horizontal" role="form" action="view_users.php" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" role="form">
           <div class="form-group">
             <label class="col-lg-3 control-label">Name:</label>
-            <div class="col-lg-8" style="margin-top: 7px;">
+            <div class="col-lg-8">
 <!--               <input class="form-control" type="text" value="" /> -->
-		    <?php echo $name; ?>
+		    <?php echo $name ?>
             </div>
           </div>
           
           <div class="form-group">
             <label class="col-md-3 control-label">Username:</label>
-            <div class="col-md-8" style="margin-top: 7px;">
+            <div class="col-md-8">
 <!--               <input class="form-control" type="text" value="" /> -->
-		  <?php echo $username; ?>
+		  <?php echo $username ?>
             </div>
           </div><!--
           <div class="form-group">
@@ -153,34 +148,54 @@
           </div>-->
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
-            <div class="col-lg-8" style="margin-top: 7px;">
+            <div class="col-lg-8">
 <!--               <input class="form-control" type="text" value="" /> -->
-		  <?php echo $email; ?>
+		  <?php echo $email ?>
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Phone No:</label>
-            <div class="col-lg-8" style="margin-top: 7px;">
-<!--               <input class="form-control" type="text" value=""> -->
-		  <?php echo $phone; ?>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Resume:</label>
             <div class="col-lg-8">
 <!--               <input class="form-control" type="text" value=""> -->
-		  <?php echo $resname; ?>
-		  <div class="btn btn-link" /><a target = '_blank' href="<?php echo $path; ?>">Download</a></div>
-		  <span class="glyphicon glyphicon-download" style="margin-left: -2%; margin-top: 1%;"></span>
+		  <?php echo $phone ?>
             </div>
           </div>
-          
         </form>
-        
       </div>
   </div>
 </div>
 <hr>
 </body>
 </html>
+
+<?php
+
+  if (isset($_POST['upload']))
+  {
+    echo "</br>";
+    echo $username=$_SESSION['username'];echo "</br>";
+    
+    echo $name=$_FILES['file']['name'];echo "</br>";
+    echo $size=$_FILES['file']['size'];echo "</br>";
+    echo $type=$_FILES['file']['type'];echo "</br>";
+
+    echo $tmp_name=$_FILES['file']['tmp_name'];echo "</br>";
+    if (!empty($name))
+    {   
+      $location='uploads/';
+      if (move_uploaded_file($tmp_name, $location.$username))
+      {
+	echo 'File Uploaded!';
+      }  
+      else
+      {
+	echo 'There is an error!';
+	echo $error=$_FILES['file']['error'];
+      }
+    }
+    else
+    {
+      echo 'Please! choose a file.';
+    }
+  }
+?>

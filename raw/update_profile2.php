@@ -75,7 +75,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
-                <li><a href="update_profile.php"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a></li>
+                <li><a href="update_profile1.php"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a></li>
                 <li><a href="view_profile.php"><span class="glyphicon glyphicon-eye-open"></span> View Profile</a></li>
                 <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> Sign out</a></li><!--
                 <li class="divider"></li>
@@ -102,7 +102,7 @@
           
           <h6 style="margin-left: 30%;">Upload a different photo...</h6>
                     
-          <form action="update_profile.php" method="POST" enctype="multipart/form-data">
+          <form action="update_profile1.php" method="POST" enctype="multipart/form-data">
 	    <div class="btn btn-primary" id="picup1" style="width: 44%; margin-left: 3%">Select File</div>
 	    <input type="file" class="hidden" id="picup2" style="width: 44%; margin-left: 30%;" name="file">
 <!-- 	    <div> -->
@@ -119,7 +119,7 @@
           
           <h6>Upload a different photo...</h6>
                     -->
-          <form action="update_profile.php" method="POST" enctype="multipart/form-data">
+          <form action="update_profile1.php" method="POST" enctype="multipart/form-data">
 <!-- 	    <div class="btn btn-primary" style="width: 44%;"> -->
 	      <label class="col-md-3 control-label">Upload Resume:</label>
 	      <div class="btn btn-primary" id="resup1" style="width: 44%; margin-left: -22%;">Select File</div>
@@ -138,7 +138,7 @@
       <!-- edit form column -->
       <div class="col-md-8 personal-info">
         
-        <form class="form-horizontal" role="form" action="update_profile.php" method="POST">
+        <form class="form-horizontal" role="form" action="update_profile1.php" method="POST">
           <div class="form-group">
             <label class="col-lg-3 control-label">Name:</label>
             <div class="col-lg-8">
@@ -215,22 +215,39 @@
 <?php
   
   $username=$_SESSION['username'];
+  echo "<script>alert('$username'); </script>";
   mysql_connect("localhost", "root", "ali");
   mysql_select_db("job_portal");
   
-  $check="SELECT * FROM users_info where username='$username'";
+  $check="SELECT COUNT(*) FROM users_info where username='$username'";
     
     $run=mysql_query($check);
     
-    if(!mysql_num_rows($run)) {
-//       $query="Insert into users_info (username) values ('$username')";
-      mysql_query("INSERT INTO users_info (username) values ('$username')") or die ("username Insertion failed!") ;
+    if(mysql_fetch_assoc($run)) {
+      $query="Insert into users_info (username) values ('$username')";
+// 	 echo "<script>alert ('Username already present in users_info table!')</script>";
+    } else {
+	 $query="Insert into users_info (username) values ('$username')";
+	 $run=mysql_query($check);
     }
     
   
   if (isset($_POST['upload_pic']))
   {   
- 
+  /*
+    $check="SELECT * FROM users_info where username='$username'";
+    
+    $run=mysql_query($check);
+    
+    if(mysql_num_rows($run)>0) {
+	echo "<script>alert ('Username already present in users_info table!')</script>";	
+//       $query="Insert into users_info (username) values ('$username')";
+    }
+    else
+    {
+      $query="Insert into users_info (username) values ('$username')";
+      echo "<script>alert ('Username Entered in users_info table!')</script>";
+    }*/
     echo "</br>";
     echo $username=$_SESSION['username'];echo "</br>";    
     echo $name=$_FILES['file']['name'];echo "</br>";
@@ -254,13 +271,12 @@
       {
       	echo 'File Uploaded!';
       	$run=mysql_query("UPDATE users_info SET profile_pic='$location$name' WHERE username='$username'")/* or die ("update could not be applied")*/;
-      	/*if(!mysql_num_rows($run))
+      	if(!mysql_num_rows($run))
       	{
 	  $err=mysql_error($run);
 	  echo "<script>alert(' $err')</script>";
-      	}*/
-
-      	echo "<script> window.open('update_profile.php', '_self')</script>";
+      	}
+      	echo "<script> window.open('update_profile1.php', '_self')</script>";
       }  
       else
       {
@@ -297,8 +313,7 @@
       {
       	echo 'File Uploaded!';
       	mysql_query("UPDATE users_info SET resume='$location$name', resname='$name' WHERE username='$username'") or die ("update could not be applied");
-      	echo "<script>alert('Your Resume has been uploaded!'); </script>";
-        echo "<script> window.open('update_profile.php', '_self'); </script>";
+      	echo "<script> window.open('update_profile1.php', '_self')</script>";
       }  
       else
       {
@@ -333,7 +348,7 @@
 //       $query="UPDATE users SET name='$name1', password='$password1', email='$email1', phone='$phone1' WHERE username='$username'";
       mysql_query("UPDATE users SET name='$name1', password='$password1', email='$email1', phone='$phone1' WHERE username='$username'") or die ("update could not be applied");
 //       echo "<script> alert('Profile updated!') </script>";
-      echo "<script> window.open('update_profile.php', '_self')</script>";
+      echo "<script> window.open('update_profile1.php', '_self')</script>";
       //exit();
     }    
   }

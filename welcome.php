@@ -56,9 +56,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="welcome.php">Home</a></li>
+            <li class="active"><a href="welcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="view_jobs.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -78,8 +79,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
-                <li><a href="update_profile.php"><span class="glyphicon glyphicon-refresh"></span> Update Profile</a></li>
-                <li><a href="view_profile.php"><span class="glyphicon glyphicon-refresh"></span> View Profile</a></li>
+                <li><a href="update_profile.php"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a></li>
+                <li><a href="view_profile.php"><span class="glyphicon glyphicon-eye-open"></span> View Profile</a></li>
                 <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> Sign out</a></li><!--
                 <li class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
@@ -133,14 +134,13 @@
         </a>
       </div>
 
-
     </div> <!-- /container -->
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+    <script src="bootstrap/js/jquery-1.10.2.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

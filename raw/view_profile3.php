@@ -26,6 +26,10 @@
   $location=$row[2];
   $path=$row[3];
   $resname=$row[4];
+  if($resname=='')
+  {
+    $resname=="Not uploaded Yet";
+  }
   
 ?>
 <!DOCTYPE html>
@@ -129,7 +133,7 @@
         
 <!--         <h3>Personal info</h3> -->
         
-        <form class="form-horizontal" role="form" action="view_users.php" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" role="form">
           <div class="form-group">
             <label class="col-lg-3 control-label">Name:</label>
             <div class="col-lg-8" style="margin-top: 7px;">
@@ -168,16 +172,16 @@
           
           <div class="form-group">
             <label class="col-lg-3 control-label">Resume:</label>
-            <div class="col-lg-8">
+            <div class="col-lg-8" style="margin-top: 7px;">
 <!--               <input class="form-control" type="text" value=""> -->
 		  <?php echo $resname; ?>
-		  <div class="btn btn-link" /><a target = '_blank' href="<?php echo $path; ?>">Download</a></div>
-		  <span class="glyphicon glyphicon-download" style="margin-left: -2%; margin-top: 1%;"></span>
             </div>
           </div>
           
         </form>
-        
+        <form class="form-horizontal" role="form" action="view_profile.php" method="POST" enctype="multipart/form-data">
+	    
+        </form>
       </div>
   </div>
 </div>

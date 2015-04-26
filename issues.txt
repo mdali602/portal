@@ -1,0 +1,4 @@
+Issues:
+1. if rec sessiion is set and we go to users pages then it not stop it going there(vice-versa also true).
+2. when user uploading first time it uploads but path does not save in users_info table coz it require to user already exist in table if it is so only then upload path is saved.
+3. 
