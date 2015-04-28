@@ -34,11 +34,14 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="welcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+            <!-- <li><a href="welcome.php"><span class="glyphicon glyphicon-home"></span></a></li> -->
+            <li class="active"><a href="view_jobs.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li class="active"><a href="view_jobs.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li>
-            <li class="dropdown">
+            <!-- <li class="active"><a href="view_jobs.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li> -->
+            <!-- <li><a href="dashboard.php"><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD</a></li> -->
+            <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
@@ -49,10 +52,11 @@
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-            </li>
+            </li> -->
           </ul>
     
     <ul class="nav navbar-nav pull-right">
+      <li><a href="dashboard.php"><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD</a></li>
       <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 <span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span>

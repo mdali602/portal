@@ -42,11 +42,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li class="active"><a href="view_jobs_rec.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li>
-            <li class="dropdown">
+            <li><a href="postjob.php"><span class="glyphicon glyphicon-export"></span> Post a Job</a></li>
+            <!-- <li class="active"><a href="view_jobs_rec.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li> -->
+            <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
@@ -57,18 +58,17 @@
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-            </li>
+            </li> -->
           </ul>
 	  
 	  <ul class="nav navbar-nav pull-right">
-	    <li class="dropdown">
+	    <li class="active"><a href="jobposted.php"><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD</a></li>
+      <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a></li>
                 <li><a href="view_profile_rec.php"><span class="glyphicon glyphicon-eye-open"></span> View Profile</a></li>
-                <li><a href="postjob.php"><span class="glyphicon glyphicon-export"></span> Post a Job</a></li>
-                <li><a href="jobposted.php"><span class="glyphicon glyphicon-import"></span> Job Posted</a></li>
                 <li><a href="logout_rec.php"><span class="glyphicon glyphicon-off"></span> Sign out</a></li><!--
                 <li class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
@@ -112,7 +112,9 @@
 			<div class="col-lg-9" style="margin-top: 7px;">
 			      <h3><?php echo $jobname; ?></h3>
 			      
-      			      <div type="submit" class="btn btn-link" id="Applicants" style="width: 12%; margin-left: 80%; margin-top: -4%"> <a href="applicants1.php?job_id=<?php echo $job_id; ?>"> Applicants </a></div>
+      			  <div type="submit" class="btn btn-link" id="Applicants" style="width: 12%; margin-left: 80%; margin-top: -4%">
+                <a href="applicants.php?job_id=<?php echo $job_id; ?>"> Applicants </a>
+              </div>
 
 			      <a href="#"><h4><?php echo $compname; ?></h4></a>
 			      <div><b>Location: </b><?php echo $location; ?></div>
@@ -135,7 +137,8 @@
 	</div>
     <!-- 	</table> -->
     </div>	<!-- End Container -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+    <script src="bootstrap/js/jquery-1.10.2.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

@@ -75,7 +75,7 @@
 // 			$posted=$row[8];
 			$closed=$row[9];
 		?>
-			
+		<tr>			
 			<td><?php echo $s_no; ?></td>
 			<td><?php echo $compname; ?></td>
 			<td><?php echo $jobname; ?></td>
@@ -83,11 +83,10 @@
 			<td><?php echo $location; ?></td>
 			<td><?php echo $status; ?></td>
 			<td><?php echo $closed; ?></td>
-					 <?php } ?> 
-
-		    </tr>
-
-		 <?php } ?> 
+		<!-- <?php } ?>  -->
+		</tr>
+		<?php } ?>
+		<?php } ?> 
 	    </table><!-- </table> -->
 
 	</div>

@@ -44,10 +44,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="welcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-home"> Home</span></a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="view_jobs_rec.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li>
+            <li class="active"><a href="postjob.php"><span class="glyphicon glyphicon-export"></span> Post a Job</a></li>
+            <!-- <li><a href="view_jobs_rec.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -59,18 +60,17 @@
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-            </li>
+            </li> -->
           </ul>
 	  
 	  <ul class="nav navbar-nav pull-right">
-	    <li class="dropdown active">
+    <li><a href="jobposted.php"><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD</a></li>
+	    <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a></li>
                 <li><a href="view_profile_rec.php"><span class="glyphicon glyphicon-eye-open"></span> View Profile</a></li>
-                <li><a href="postjob.php"><span class="glyphicon glyphicon-export"></span> Post a Job</a></li>
-                <li><a href="jobposted.php"><span class="glyphicon glyphicon-import"></span> Job Posted</a></li>
                 <li><a href="logout_rec.php"><span class="glyphicon glyphicon-off"></span> Sign out</a></li><!--
                 <li class="divider"></li>
                 <li class="dropdown-header">Nav header</li>

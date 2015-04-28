@@ -7,24 +7,9 @@
   }
   
   $username=$_SESSION['username'];
-//   mysql_connect("localhost", "root", "ali");
-//   mysql_select_db("job_portal");
-//   
-//   $query="SELECT * FROM jobnseeker WHERE seekername='$username'";
-//   $run=mysql_query($query);
-//   $row=mysql_fetch_array($run);
-//   
-//   $name=$row[1];
-//   $username=$row[2];
-//   $password=$row[3];
-//   $email=$row[4];
-//   $phone=$row[5];
-// //   $location='uploads/';
-//   $query="SELECT * FROM users_info WHERE username='$username'";
-//   $run=mysql_query($query);
-//   $row=mysql_fetch_array($run);
-//   $location=$row[2];
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,8 +21,6 @@
     <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
 <!--     <link rel="stylesheet" type="text/css" href="form/style.css" /> -->
     
-    <script type="text/javascript" src="bootstrap/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -54,11 +37,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="welcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+            <!-- <li><a href="welcome.php"><span class="glyphicon glyphicon-home"></span></a></li> -->
+            <li><a href="view_jobs.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="view_jobs.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li>
-            <li class="dropdown">
+            <!-- <li><a href="view_jobs.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li> -->
+            <!-- <li class="active"><a href="dashboard.php"><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD</a></li> -->
+            <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
@@ -69,12 +54,17 @@
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-            </li>
+            </li> -->
           </ul>
 	  
 	  <ul class="nav navbar-nav pull-right">
-	    <li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
+
+      <li class="active"><a href="dashboard.php"><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD</a></li>
+            
+	    <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span>
+              </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
                 <li><a href="update_profile.php"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a></li>
@@ -94,65 +84,54 @@
 
 <div class="container">
     <div class="col-md-11" style="margin-left: 4%; margin-top: 12%;">
-	<table class="table table-striped">
+    <table class="table table-striped table-responsive table-bordered">
 	    
-	    <tr>
-		<th>S.No.</th>
-		<th>Company Name</th>
-		<th>Job</th>
-		<th>Sallary</th>
-		<th>Location</th>
-		<th>status</th>
-<!-- 		<th>Posted On</th> -->
-		<th>Closed on</th>
-	    </tr>
-	    
-	    <tr>
+	  <tr class="info">
+  		<th>S.No.</th>
+      <th>Job</th>
+  		<th>Company Name</th>
+      <th>Location</th>
+  		<th>Sallary</th>
+  		<th>status</th>
+      <th>Closed on</th>
+	  </tr>
+
 		<?php
 		    mysql_connect("localhost", "root", "ali");
 		    mysql_select_db("job_portal");
+        $count=0;
+        $status="Applied";
+		    // $query="SELECT * FROM jobnseeker WHERE seekername='$username'";
+		    $query=mysql_query("select a.seekername, a.j_id, b.job_id, b.jobname, b.compname, b.location, b.salary, b.closed
+                            from jobnseeker a, job b
+                            where a.j_id = b.job_id AND a.seekername='$username'"
+                          );
+        while($row=mysql_fetch_array($query)) {
+		      
+    			$count=$count+1;
+          $jobname=$row[3];
+          $compname=$row[4];
+    			$location=$row[5];
+    			$salary=$row[6];
+    			$closed=$row[7];
+    		?>
+  		<tr>	
+  			<td><?php echo $count; ?></td>
+        <td><?php echo $jobname; ?></td>
+  			<td><?php echo $compname; ?></td>
+        <td><?php echo $location; ?></td>
+  			<td><?php echo $salary; ?></td>
+  			<td><?php echo $status; ?></td>
+  			<td><?php echo $closed; ?></td>
+  		</tr>
 
-		    $query="SELECT * FROM jobnseeker WHERE seekername='$username'";
-		    $run=mysql_query($query);
-		    $row=mysql_fetch_array($run);
-// 		    $name=$row[1];
-		    $jobname=$row[2];
-// 		    $compname=$row[3];
-		    
-		    $query="SELECT * FROM job WHERE job_id='$j_id'";
-// 		    $run=mysql_query($query);
-// 		    $row=mysql_fetch_array($run);
-		    $s_no=0;
-		    $status="Applied";
-		    while($row=mysql_fetch_array($run)) {
-		
-			$s_no=$s_no+1;
-			$jobname=$row[1];
-			$location=$row[2];
-// 			$exp=$row[3];
-			$salary=$row[4];
-// 			$jobdesc=$row[5];
-// 			$skills=$row[6];
-			$compname=$row[7];
-// 			$posted=$row[8];
-			$closed=$row[9];
-		?>
-			
-			<td><?php echo $s_no; ?></td>
-			<td><?php echo $compname; ?></td>
-			<td><?php echo $jobname; ?></td>
-			<td><?php echo $salary; ?></td>
-			<td><?php echo $location; ?></td>
-			<td><?php echo $status; ?></td>
-			<td><?php echo $closed; ?></td>
-		    </tr>
+  	<?php } ?> 
+	 </table><!-- </table> -->
+	</div>    
+</div>	<!-- End Container -->
 
-		 <?php } ?> 
-	    </table><!-- </table> -->
-
-	</div>
-    
-    </div>	<!-- End Container -->
+  <script type="text/javascript" src="bootstrap/js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 </html>
