@@ -92,7 +92,7 @@
       $_SESSION['username']=$username;
 //       echo $check_user;
 
-      echo "<script> window.open('welcome.php', '_self')</script>";
+      echo "<script> window.open('view_jobs.php', '_self')</script>";
 //       echo "<script> alert('Login Successfull!')</script>";
     }
     else {
