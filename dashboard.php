@@ -1,15 +1,26 @@
 <?php
+    
+    mysql_connect("localhost", "root", "ali");
+    mysql_select_db("job_portal");
 
-  session_start();
-  if(!$_SESSION['username'])
-  {
-    header("location: login.php");
-  }
-  
-  $username=$_SESSION['username'];
-
+    session_start();
+    if($_SESSION['username']) {
+      // header("location: view_jobs.php");
+       $username=$_SESSION['username'];
+       $query="SELECT * FROM recruiters WHERE username='$username'";
+       $run=mysql_query("$query");
+       if(mysql_num_rows($run) > 0) {
+           // echo "<script> alert('You are already logged in as recruiter....First logout from Recruiter\'s Panel!')</script>";
+           // echo "<script> alert('Already logged in as recruiter....Logout from there!)</script>";
+           // header("location: view_profile_rec.php");
+           // echo "<script> window.open('view_profile_rec.php', '_self')</script>";
+           session_destroy();
+           header("location: login.php");
+           exit();
+       }
+       // header("location: view_jobs.php");
+    }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +74,7 @@
             
 	    <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span>
+                <span class="glyphicon glyphicon-user"></span> <?php echo $username; ?> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>

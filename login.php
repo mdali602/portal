@@ -1,3 +1,28 @@
+<?php
+    
+    mysql_connect("localhost", "root", "ali");
+    mysql_select_db("job_portal");
+
+    session_start();
+    if($_SESSION['username']) {
+      // header("location: view_jobs.php");
+       $username=$_SESSION['username'];
+       $query="SELECT * FROM recruiters WHERE username='$username'";
+       $run=mysql_query("$query");
+       if(mysql_num_rows($run) > 0) {
+           // echo "<script> alert('You are already logged in as recruiter....First logout from Recruiter\'s Panel!')</script>";
+           // echo "<script> alert('Already logged in as recruiter....Logout from there!)</script>";
+           // header("location: view_profile_rec.php");
+           // echo "<script> window.open('view_profile_rec.php', '_self')</script>";
+           session_destroy();
+           header("location: login.php");
+           exit();
+       }
+       header("location: view_jobs.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +35,6 @@
 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-
     
 </head>
 <body>
@@ -31,12 +55,12 @@
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
+                                        <input id="username" type="text" class="form-control" name="username" value="" placeholder="Username">                                        
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                                        <input id="login-password" type="password" class="form-control" name="password" placeholder="Password">
                                     </div>
                                     
                                 <div style="margin-top:10px" class="form-group">

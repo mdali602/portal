@@ -1,11 +1,11 @@
 <?php
 
-  /*session_start();
+  session_start();
   if(!$_SESSION['username'])
   {
-    header("location: login.php");
+    header("location: login_rec.php");
   }
-  */
+  $username=$_SESSION['username'];
   $applicant=$_GET['applicant'];
   mysql_connect("localhost", "root", "ali");
   mysql_select_db("job_portal");
@@ -59,7 +59,9 @@
             <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="view_jobs_rec.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li>
+            <li><a href="postjob.php"><span class="glyphicon glyphicon-export"></span> Post a Job</a></li>
+
+            <!-- <li><a href="view_jobs_rec.php"><span class="glyphicon glyphicon-search"></span> Jobs</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -71,32 +73,35 @@
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-            </li>
+            </li> -->
           </ul>
     
     <ul class="nav navbar-nav pull-right">
-      <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a></li>
-                <li><a href="view_profile_rec.php"><span class="glyphicon glyphicon-eye-open"></span> View Profile</a></li>
-                <li><a href="postjob.php"><span class="glyphicon glyphicon-export"></span> Post a Job</a></li>
-                <li><a href="jobposted.php"><span class="glyphicon glyphicon-import"></span> Job Posted</a></li>
-                <li><a href="logout_rec.php"><span class="glyphicon glyphicon-off"></span> Sign out</a></li><!--
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>-->
-              </ul>
-            </li>
+      <li><a href="jobposted.php"><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD</a></li>
+      <li class="dropdown active">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+          <span class="glyphicon glyphicon-user"></span> <?php echo $username; ?> <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</a></li>
+          <li><a href="view_profile_rec.php"><span class="glyphicon glyphicon-eye-open"></span> View Profile</a></li>
+          <li><a href="logout_rec.php"><span class="glyphicon glyphicon-off"></span> Sign out</a></li><!--
+          <li class="divider"></li>
+          <li class="dropdown-header">Nav header</li>
+          <li><a href="#">Separated link</a></li>
+          <li><a href="#">One more separated link</a></li>-->
+        </ul>
+      </li>
     </ul>
+    
     
         </div><!--/.nav-collapse -->
       </div>
     </nav>
  	<hr>
  <div class="container" style="margin-top: 10%;">
+  <h3 style="margin-left: 13%; margin-top:-3%; margin-bottom: 4%;">Applicant's Profile:</h3>
 	<div class="row">
       <!-- left column -->
       <div class="col-md-3">

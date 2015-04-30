@@ -1,3 +1,27 @@
+<?php
+    
+    mysql_connect("localhost", "root", "ali");
+    mysql_select_db("job_portal");
+
+    session_start();
+    if($_SESSION['username']) {
+      // header("location: view_jobs.php");
+       $username=$_SESSION['username'];
+       $query="SELECT * FROM users WHERE username='$username'";
+       $run=mysql_query("$query");
+       if(mysql_num_rows($run) > 0) {
+           // echo "<script> alert('You are already logged in as job-seeker....First logout from job-seeker\'s Panel!')</script>";
+           // header("location: view_profile_rec.php");
+           // echo "<script> window.open('view_profile.php', '_self')</script>";
+           session_destroy();
+           header("location: login_rec.php");
+           exit();
+       }
+       header("location: view_profile_rec.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

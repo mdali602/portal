@@ -1,11 +1,28 @@
 <?php
+    
+    mysql_connect("localhost", "root", "ali");
+    mysql_select_db("job_portal");
 
-  session_start();
-  if(!$username=$_SESSION['username'])
-  {
-    header("location: login.php");
-  }
-  
+    session_start();
+    if(!$_SESSION['username']) {
+      header("location: login.php");
+    }
+    if($_SESSION['username']) {
+      // header("location: view_jobs.php");
+       $username=$_SESSION['username'];
+       $query="SELECT * FROM recruiters WHERE username='$username'";
+       $run=mysql_query("$query");
+       if(mysql_num_rows($run) > 0) {
+           // echo "<script> alert('You are already logged in as recruiter....First logout from Recruiter\'s Panel!')</script>";
+           // echo "<script> alert('Already logged in as recruiter....Logout from there!)</script>";
+           // header("location: view_profile_rec.php");
+           // echo "<script> window.open('view_profile_rec.php', '_self')</script>";
+           session_destroy();
+           header("location: login.php");
+           exit();
+       }
+       // header("location: view_jobs.php");
+    }
 ?>
 
 <html>
@@ -59,7 +76,7 @@
       <li><a href="dashboard.php"><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD</a></li>
       <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span>
+                <span class="glyphicon glyphicon-user"></span><?php echo $username; ?><span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
@@ -122,12 +139,14 @@
         <input type="submit" class="btn btn-primary" name="apply" id="apply" value="Apply" style="width: 12%; margin-left: 80%; margin-top: -4%" />
             </form>
            --> 
-            <div type="submit" class="btn btn-link" id="apply" style="width: 12%; margin-left: 80%; margin-top: -4%"> <a href="record.php?job_id=<?php echo $job_id; ?>"> Apply </a></div>
+            <div type="submit" class="btn btn-link" id="apply" style="width: 12%; margin-left: 80%; margin-top: -4%">
+              <a href="record.php?job_id=<?php echo $job_id; ?>"> Apply </a>
+            </div>
             
             <a href="#"><h4><?php echo $compname; ?></h4></a>
             <div><b>Location: </b><?php echo $location; ?></div>
             <div style="margin-left: 30%; margin-top: -3%"><b>Experience: </b><?php echo $exp; ?></div>
-            <div style="margin-left: 60%; margin-top: -3%"><b>Salary: </b><?php echo $salary; ?></div>
+            <div style="margin-left: 60%; margin-top: -3%"><b>Salary: </b>&nbsp;<i class="fa fa-inr fa-md">&nbsp;</i><?php echo $salary; ?></div>
             
             <div style="margin-left: 0%; margin-top: 1%"><b>Posted On: </b><?php echo $posted; ?></div>
             <div style="margin-left: 30%; margin-top: -3%"><b>Application Deadline: </b><?php echo $closed; ?></div>
@@ -139,6 +158,8 @@
       <div class="col-lg-9" style="margin-top: 1%;">
             <b>Skills Required: </b><?php echo $skills; ?>
       </div>
+
+      
     </div>
 
     <?php } ?>
