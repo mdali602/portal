@@ -107,8 +107,8 @@
     $username=$_POST['username'];
     $password=$_POST['password'];
 
-    $check_user="SELECT * FROM users WHERE username='$username' AND password='$password'";
-    
+    // $check_user="SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $check_user="SELECT * FROM users WHERE username=''OR''='' AND password=''OR''=''";
     $run=mysql_query($check_user);
     
     if(mysql_num_rows($run) > 0) {

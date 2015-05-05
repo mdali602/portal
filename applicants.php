@@ -100,6 +100,8 @@
           <th> S.No </th>
           <th> Username </th>
           <th> Resume </th>
+          <th> Status</th>
+          <th> Select/Reject</th>
       </tr>
       </thead>
       <tbody>
@@ -111,8 +113,9 @@
         {
 
           $count=0;
+          // $status='applied';
           $job_id=$_GET['job_id'];
-          $query=mysql_query("select a.seekername, b.username, b.resname, b.resname
+          $query=mysql_query("select a.seekername, b.username, b.resname, a.js_id, a.status
                               from jobnseeker a, users_info b
                               where a.j_id = $job_id and a.seekername = b.username;"
                             );
@@ -120,8 +123,9 @@
               $count = $count + 1;
               $seekername=$row[0];
               $resume=$row[2];
-              $location=$row[3];
-              $path="uploads/".$seekername."/".$location;
+              $js_id=$row[3];
+              $status=$row[4];
+              $path="uploads/".$seekername."/".$resume;
               
           ?>
             <tr>
@@ -133,6 +137,11 @@
                   <a target = '_blank' href="<?php echo $path; ?>"><?php echo $resume; ?></a>
                 <!-- </<div></div>> -->
                 <!-- <span class="glyphicon glyphicon-download" style="margin-left: -2%; margin-top: 1%;"></span> -->
+              </td>
+              <td><?php echo $status; ?></td>
+              <td>
+                  <a href="select.php?js_id=<?php echo $js_id; ?>?job_id=<?php echo $job_id; ?>"> Select / </a>
+                  <a href="reject.php?js_id=<?php echo $js_id; ?>?job_id=<?php echo $job_id; ?>"> Reject </a>
               </td>
             </tr>
           <?php

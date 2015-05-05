@@ -111,9 +111,9 @@
 		    mysql_connect("localhost", "root", "ali");
 		    mysql_select_db("job_portal");
         $count=0;
-        $status="Applied";
+        // $status="Applied";
 		    // $query="SELECT * FROM jobnseeker WHERE seekername='$username'";
-		    $query=mysql_query("select a.seekername, a.j_id, b.job_id, b.jobname, b.compname, b.location, b.salary, b.closed
+		    $query=mysql_query("select a.seekername, a.j_id, b.job_id, b.jobname, b.compname, b.location, b.salary, b.closed, a.status
                             from jobnseeker a, job b
                             where a.j_id = b.job_id AND a.seekername='$username'"
                           );
@@ -125,6 +125,7 @@
     			$location=$row[5];
     			$salary=$row[6];
     			$closed=$row[7];
+          $status=$row[8];
     		?>
   		<tr>	
   			<td><?php echo $count; ?></td>

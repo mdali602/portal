@@ -41,11 +41,11 @@
       	echo "<script> window.open('view_jobs.php', '_self'); </script>";
       	exit();
       }
-      $query="INSERT INTO jobnseeker (seekername, j_id) values ('$username', '$job_id')";
+      $query="INSERT INTO jobnseeker (seekername, j_id, status) values ('$username', '$job_id', 'Applied')";
       
       if(mysql_query($query)>0) {
       	echo "<script> alert('Your response is registered!'); </script>";
       	echo "<script> window.open('view_jobs.php', '_self'); </script>";
       }
     }
-?>
+?>pp
