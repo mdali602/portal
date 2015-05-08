@@ -24,12 +24,13 @@
     if(isset($_GET['js_id']))
     {
       $id=$_GET['js_id'];
+      $job_id=$_GET['job_id'];
       // $job_id=$_GET['job_id'];
       $query = mysql_query("UPDATE jobnseeker SET status='Selected' WHERE js_id='$id'");
       while($row = mysql_fetch_array($query)) {
         $job_id = $row[2];
       }
-      echo "<script>alert('$job_id')</script>";
+      // echo "<script>alert('$job_id')</script>";
       echo "<script> window.open('applicants.php?job_id=$job_id', '_self') </script>";
     }
 ?>

@@ -140,8 +140,8 @@
               </td>
               <td><?php echo $status; ?></td>
               <td>
-                  <a href="select.php?js_id=<?php echo $js_id; ?>?job_id=<?php echo $job_id; ?>"> Select / </a>
-                  <a href="reject.php?js_id=<?php echo $js_id; ?>?job_id=<?php echo $job_id; ?>"> Reject </a>
+                  <a href="select.php?js_id=<?php echo $js_id; ?>&job_id=<?php echo $job_id; ?>"> Select / </a>
+                  <a href="reject.php?js_id=<?php echo $js_id; ?>&job_id=<?php echo $job_id; ?>"> Reject </a>
               </td>
             </tr>
           <?php
