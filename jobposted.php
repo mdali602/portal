@@ -3,7 +3,7 @@
   session_start();
   if(!$_SESSION['username'])
   {
-    // header("location: login_rec.php");
+     header("location: login_rec.php");
   }
   $username=$_SESSION['username'];
   mysql_connect("localhost", "root", "ali");
